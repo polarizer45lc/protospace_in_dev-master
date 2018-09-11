@@ -43,3 +43,21 @@
           %a{href: "#", class: "btn btn-default"} iPad
         %li
           %a{href: "#", class: "btn btn-default"} wireframe
+  .row.photo-comments
+    %h4 Comments
+    #comment-list
+      - if @comments
+        %comments-box
+        - @comments.each do |comment|
+          %p= comment.user.name
+          %p= (comment.comment)
+    / = form_for [@comment] do |f|
+    /   %p
+    /     Write a comment
+    /   = f.text_field :comment, placeholder: 'comment', type: 'text'
+    /   = button_tag type: 'submit', class: 'btn btn--block'
+
+
+
+
+
