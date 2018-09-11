@@ -2,7 +2,7 @@ class PrototypesController < ApplicationController
   before_action :set_prototype, only: :show
 
   def index
-    @prototypes = Prototype.all
+    @prototypes = Prototype.order('created_at DESC').includes(:user).page(params[:page]).per(9)
   end
 
   def new
@@ -17,6 +17,11 @@ class PrototypesController < ApplicationController
     else
       redirect_to action: :new, alert: 'New prototype was unsuccessfully created'
     end
+  end
+
+  def destroy
+    prototype = Prototype.find(params[:id])
+    prototype.destroy if prototype.user_id == current_user.id
   end
 
   def show
