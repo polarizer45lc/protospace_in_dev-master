@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: :show
+  before_action :set_prototype, only: [:show, :destroy]
 
   def index
     @prototypes = Prototype.order('created_at DESC').includes(:user).page(params[:page]).per(9)
@@ -20,8 +20,8 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
-    prototype = Prototype.find(params[:id])
-    prototype.destroy if prototype.user_id == current_user.id
+    @prototype.destroy if @prototype.user_id == current_user.id
+    redirect_to :root, notice: "削除完了しました"
   end
 
   def show
