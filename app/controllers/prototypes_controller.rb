@@ -43,7 +43,7 @@ class PrototypesController < ApplicationController
       :concept,
       :user_id,
       captured_images_attributes: [:content, :status]
-      :tags_attributes
+      tags_attributes: [:name]
     )
   end
 end
