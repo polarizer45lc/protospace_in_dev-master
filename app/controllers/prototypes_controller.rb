@@ -8,6 +8,7 @@ class PrototypesController < ApplicationController
   def new
     @prototype = Prototype.new
     @prototype.captured_images.build
+    @prototype.tags.bild
   end
 
   def create
@@ -42,6 +43,7 @@ class PrototypesController < ApplicationController
       :concept,
       :user_id,
       captured_images_attributes: [:content, :status]
+      :tags_attributes
     )
   end
 end
