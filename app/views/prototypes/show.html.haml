@@ -45,3 +45,22 @@
           %a{href: "#", class: "btn btn-default"} Tag02
         %li
           %a{href: "#", class: "btn btn-default"} Tag03
+  .row.photo-comments
+    %h4 Comments
+    #comment-list
+      - if @comments
+        %comments-box
+        - @comments.each do |comment|
+          %p= comment.user.name
+          %p= (comment.comment)
+    - if user_signed_in?
+      = form_for(@comment, url: prototype_comments_path(prototype_id: @prototype.id)) do |f|
+        %p
+          Write a comment
+        = f.text_field :comment, placeholder: 'comment', type: 'text'
+        = f.submit "send"
+
+
+
+
+>>>>>>> master

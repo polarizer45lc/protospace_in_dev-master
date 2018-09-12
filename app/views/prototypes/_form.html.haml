@@ -35,11 +35,11 @@
         .col-md-12
           %h4 Tag List
           .form_tag
-            = f.text_field :concept, required: true, class: "form_tag", placeholder: "タグいっこめ"
+            = f.text_field :name, required: true, class: "form_tag", placeholder: "タグいっこめ"
           .form_tag
-            = f.text_field :concept, class: "form_tag", placeholder: "タグにこめ"
+            = f.text_field :name, class: "form_tag", placeholder: "タグにこめ"
           .form_tag
-            = f.text_field :concept, class: "form_tag", placeholder: "タグさんこめ"
+            = f.text_field :name, class: "form_tag", placeholder: "タグさんこめ"
 
       .row.text-center.proto-btn
         = f.submit "PUBLISH", id: "button", class: "btn btn-lg btn-primary btn-block"
