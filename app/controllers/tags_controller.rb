@@ -5,8 +5,6 @@ class TagsController < ApplicationController
   end
 
   def show
-    tag = Tag.find('params[:id]')
-    @proto = prototype.tag
   end
 
 end
