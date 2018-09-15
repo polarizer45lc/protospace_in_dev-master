@@ -18,13 +18,24 @@
         .col-md-12
           %h4 Sub Thumbnails
           %ul.proto-sub-list.list-group
-            - 3.times do |i|
-              %li.list-group-item.col-md-4
-                .image-upload#sub_image_uploader
-                  = f.fields_for :captured_images do |image|
-                    = image.file_field :content
-                    %img#sub_preview{style: "width:100%;height:100%;"}
-                    = image.hidden_field :status, value: "sub"
+            %li.list-group-item.col-md-4
+              .image-upload#sub_image_uploader1
+                = f.fields_for :captured_images do |image|
+                  = image.file_field :content
+                  %img#sub_preview1{style: "width:100%;height:100%;"}
+                  = image.hidden_field :status, value: "sub"
+            %li.list-group-item.col-md-4
+              .image-upload#sub_image_uploader2
+                = f.fields_for :captured_images do |image|
+                  = image.file_field :content
+                  %img#sub_preview2{style: "width:100%;height:100%;"}
+                  = image.hidden_field :status, value: "sub"
+            %li.list-group-item.col-md-4
+              .image-upload#sub_image_uploader3
+                = f.fields_for :captured_images do |image|
+                  = image.file_field :content
+                  %img#sub_preview3{style: "width:100%;height:100%;"}
+                  = image.hidden_field :status, value: "sub"
       .row.proto-description
         .col-md-12
           %h4 Catch Copy
