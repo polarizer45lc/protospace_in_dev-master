@@ -8,12 +8,13 @@ class PrototypesController < ApplicationController
   def new
     @prototype = Prototype.new
     @prototype.captured_images.build
-    @prototype.tags.build
   end
 
   def create
     @prototype = Prototype.new(prototype_params)
+    tag_list = params[:prototype][:tag_list].reject{|tag| tag == ""}
     if @prototype.save
+      @prototype.save_tags(tag_list)
       redirect_to :root, notice: 'New prototype was successfully created'
     else
       redirect_to action: :new, alert: 'New prototype was unsuccessfully created'
@@ -43,7 +44,6 @@ class PrototypesController < ApplicationController
       :concept,
       :user_id,
       captured_images_attributes: [:content, :status],
-      tags_attributes: [:name]
     )
   end
 end
