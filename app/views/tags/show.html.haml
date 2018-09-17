@@ -1,1 +1,5 @@
-hello world
+- @prototypes.each do |proto|
+  = proto.title
+  =  image_tag(proto.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
+
+= paginate(@prototypes)
