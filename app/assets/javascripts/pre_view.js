@@ -35,3 +35,8 @@ $(function(){
     reader.readAsDataURL(file);
   });
 });
+
+$('#a')
+.on("click", function(e) {
+  location.reload();
+});
