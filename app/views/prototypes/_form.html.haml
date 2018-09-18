@@ -43,13 +43,22 @@
                       = image.hidden_field :status, value: "sub"
           -else
             %ul.proto-sub-list.list-group
-              - 3.times do |i|
-                %li.list-group-item.col-md-4
-                  .image-upload#sub_image_uploader
-                    = f.fields_for :captured_images do |image|
-                      %img#sub_preview{style: "height:100%;width:100%" }
-                      = image.file_field :content
-                      = image.hidden_field :status, value: "sub"
+              %li.list-group-item.col-md-4
+                .image-upload#sub_image_uploader0
+                  = f.fields_for :captured_images do |image|
+                    %img#sub_preview0{style: "height:100%;width:100%" }
+                    = image.file_field :content
+                    = image.hidden_field :status, value: "sub"
+                .image-upload#sub_image_uploader1
+                  = f.fields_for :captured_images do |image|
+                    %img#sub_preview1{style: "height:100%;width:100%" }
+                    = image.file_field :content
+                    = image.hidden_field :status, value: "sub"
+                .image-upload#sub_image_uploader2
+                  = f.fields_for :captured_images do |image|
+                    %img#sub_preview2{style: "height:100%;width:100%" }
+                    = image.file_field :content
+                    = image.hidden_field :status, value: "sub"
 
       .row.proto-description
         .col-md-12
