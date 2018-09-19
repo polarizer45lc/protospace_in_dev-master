@@ -5,6 +5,6 @@ class TagsController < ApplicationController
 
   def show
     tag= Tag.find(params[:id])
-    @prototypes = tag.prototypes.page(params[:page]).per(5)
+    @prototypes = tag.prototypes.page(params[:page]).per(8)
   end
 end
