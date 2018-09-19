@@ -25,17 +25,15 @@ class Prototype < ActiveRecord::Base
 
   # タグ処理
   def save_tags(tags)
-    current_tags = self.tags.pluck(:name) unless self.tags.nil?
-    old_tags = current_tags - tags
-    new_tags = tags - current_tags
+    # current_tags = self.tags.pluck(:name) unless self.tags.nil?
+    # old_tags = current_tags - tags
+    # new_tags = tags - current_tags
 
-    # 重複するタグを削除
-    old_tags.each do |old_name|
-      self.tags.delete Tag.find_by(name:old_name)
-    end
+    # old_tags.each do |old_name|
+    #   self.tags.delete Tag.find_by(name:old_name)
+    # end
 
-    # 新しいタグを登録
-    new_tags.each do |new_name|
+    tags.each do |new_name|
       prototype_tag = Tag.find_or_create_by(name:new_name)
       self.tags << prototype_tag
     end
