@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: [:show, :destroy]
+  before_action :set_prototype, only: [:show, :destroy, :edit, :update]
 
   def index
     @prototypes = Prototype.order('created_at DESC').includes(:user).page(params[:page]).per(9)
@@ -31,6 +31,20 @@ class PrototypesController < ApplicationController
     @comments = @prototype.comments.includes(:user)
   end
 
+  def edit
+    @images_main = @prototype.captured_images.where("status='0'")
+    @images_sub = @prototype.captured_images.where("status='1'")
+    @images_new = @prototype.captured_images.build
+  end
+
+  def update
+    if @prototype.update(prototype_params)
+      redirect_to prototype_path(@prototype), notice: "編集完了しました"
+    else
+      render :edit
+    end
+  end
+
   private
 
   def set_prototype
@@ -43,7 +57,8 @@ class PrototypesController < ApplicationController
       :catch_copy,
       :concept,
       :user_id,
-      captured_images_attributes: [:content, :status],
+      captured_images_attributes: [:content, :status, :id]
     )
   end
+
 end
