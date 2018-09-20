@@ -39,10 +39,10 @@
     .col-md-3
       %h4 Tag List
       %ul.proto-tag-list.list-inline
-        %li
-          %a{href: "#", class: "btn btn-default"} iPad
-        %li
-          %a{href: "#", class: "btn btn-default"} wireframe
+        - @prototype.tags.each do |tag|
+          %li
+            = link_to "/tags/#{tag.id}", class: "btn btn-default" do
+              = tag.name
   .row.photo-comments
     %h4 Comments
     #comment-list
@@ -57,7 +57,3 @@
           Write a comment
         = f.text_field :comment, placeholder: 'comment', type: 'text'
         = f.submit "send"
-
-
-
-

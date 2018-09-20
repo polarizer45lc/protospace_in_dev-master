@@ -22,6 +22,8 @@ has_many :prototypes, likes, comments
 ```
 has_many :captured_images, comments, likes
 belongs_to :user
+has_many :tags, through: :ptototype_tags
+has_many: tags
 ```
 
 ### table
@@ -68,3 +70,29 @@ belongs_to :user, :prototype
 - user_id
 - prototype_id
 
+
+
+## Tag
+### association
+
+```
+has_many :prototypes, through: :ptototype_tags
+has_many: prototypes
+```
+
+### table
+- name
+
+
+
+## prototype_tag
+### association
+
+```
+belongs_to :tag
+belongs_to :prototype
+```
+
+### table
+|tag_id |references|null: false, foreign_key: true|
+|prototype_id|references|null: false, foreign_key: true|

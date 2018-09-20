@@ -56,5 +56,14 @@
         .col-md-12
           %h4 Concept
           = f.text_area :concept, required: true, placeholder: "Input Concept"
+        .col-md-12
+          %h4 Tag List
+          .row
+          .col-md-3
+            %input{type:"text", name: "prototype[tag_list][]", placeholder: "Tag"}
+          .col-md-3
+            %input{type:"text", name: "prototype[tag_list][]", placeholder: "Tag"}
+          .col-md-3
+            %input{type:"text", name: "prototype[tag_list][]", placeholder: "Tag"}
       .row.text-center.proto-btn
         = f.submit "PUBLISH", id: "button", class: "btn btn-lg btn-primary btn-block"

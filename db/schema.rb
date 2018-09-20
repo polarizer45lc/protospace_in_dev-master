@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180911064641) do
+ActiveRecord::Schema.define(version: 20180912062317) do
 
   create_table "captured_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string  "content"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20180911064641) do
     t.datetime "updated_at",                 null: false
   end
 
+  create_table "prototype_tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "tag_id",       null: false
+    t.integer  "prototype_id", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["prototype_id"], name: "index_prototype_tags_on_prototype_id", using: :btree
+    t.index ["tag_id"], name: "index_prototype_tags_on_tag_id", using: :btree
+  end
+
   create_table "prototypes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.string   "catch_copy"
@@ -35,6 +44,12 @@ ActiveRecord::Schema.define(version: 20180911064641) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.index ["user_id"], name: "index_prototypes_on_user_id", using: :btree
+  end
+
+  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -60,5 +75,7 @@ ActiveRecord::Schema.define(version: 20180911064641) do
   end
 
   add_foreign_key "captured_images", "prototypes"
+  add_foreign_key "prototype_tags", "prototypes"
+  add_foreign_key "prototype_tags", "tags"
   add_foreign_key "prototypes", "users"
 end

@@ -12,10 +12,12 @@ class PrototypesController < ApplicationController
 
   def create
     @prototype = Prototype.new(prototype_params)
+    tag_list = params[:prototype][:tag_list].reject{|tag| tag == ""}
     if @prototype.save
-      redirect_to :root, notice: 'New prototype was successfully created'
+      @prototype.save_tags(tag_list)
+      redirect_to :root, notice: '投稿成功'
     else
-      redirect_to action: :new, alert: 'New prototype was unsuccessfully created'
+      redirect_to action: :new, alert: '投稿失敗'
     end
   end
 

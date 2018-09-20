@@ -1,0 +1,6 @@
+.container.proto-new
+  %h1 Tags List
+  .tags__list
+    - @tags.each do |tag|
+      = link_to "/tags/#{tag.id}", class: "btn btn-default tags__btn" do
+        = tag.name
