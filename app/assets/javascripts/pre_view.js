@@ -7,6 +7,7 @@ $(function(){
       return false;
     }
     reader.onload = (function(file){
+      $(".main_photo").remove();
       return function(e){
         $("#main_preview").attr("src", e.target.result);
         $("#main_preview").attr("title", file.name);
