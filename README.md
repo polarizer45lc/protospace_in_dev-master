@@ -4,7 +4,8 @@ Structure of DataBase
 ### association
 
 ```
-has_many :prototypes, likes, comments
+has_many :prototypes, comments
+has_many :likes
 ```
 
 ### table
@@ -20,10 +21,11 @@ has_many :prototypes, likes, comments
 ### association
 
 ```
-has_many :captured_images, comments, likes
+has_many :captured_images, comments
 belongs_to :user
 has_many :tags, through: :ptototype_tags
-has_many: tags
+has_many :prototype_tags
+has_many :likes
 ```
 
 ### table
@@ -49,7 +51,8 @@ belongs_to :prototype
 ### association
 
 ```
-belongs_to :user, :prototype
+belongs_to :user
+belongs_to :prototype
 ```
 
 ### table
