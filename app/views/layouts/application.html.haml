@@ -6,6 +6,8 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' =>  true
     = javascript_include_tag 'application', 'data-turbolinks-track' =>  true
     = csrf_meta_tags
+    %script{:src => "http://code.jquery.com/jquery-3.2.1.min.js"}
+
   %body
     = render "shared/header"
     = render "shared/messages"
