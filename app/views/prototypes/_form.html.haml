@@ -10,16 +10,18 @@
       .row
         .col-md-12
           %h4 Main Thumbnail
+
           -if @images_main.present?
-            .cover-image-upload#main_image_uploader
+            .cover-image-upload#main_image_uploader{style: "border-style:none;"}
               = f.fields_for :captured_images, @images_main do |image|
-                = image_tag(@prototype.set_main_thumbnail.large, alt: "main_photo", class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
+                = image_tag(@prototype.set_main_thumbnail.large, alt: "main_photo", class: 'img-responsive img-size-fix main_photo', style: "height:100%;width:100%;")
+                %img#main_preview{style: "height:100%;width:100%;" }
                 = image.file_field :content
                 = image.hidden_field :status, value: "main"
           -else
             .cover-image-upload#main_image_uploader
               = f.fields_for :captured_images, @images_new do |image|
-                %img
+                %img#main_preview{style: "height:100%;width:100%;border-style:none;"}
                 = image.file_field :content
                 = image.hidden_field :status, value: "main"
         .col-md-12
@@ -30,25 +32,26 @@
                 %li.list-group-item.col-md-4
                   .image-upload
                     = f.fields_for :captured_images, sub_image do |image|
-                      = image_tag(sub_image.content, alt: "main_photo", class: 'img-responsive img-size-fix',style: "margin: 0 auto;,height: 200px;")
+                      = image_tag(sub_image.content, alt: "main_photo", class: 'img-responsive img-size-fix sub_photo0',style: "height:100%;width:100%;")
                       = image.file_field :content
                       = image.hidden_field :status, value: "sub"
               - (3 - @images_sub.length).times do |i|
                 %li.list-group-item.col-md-4
-                  .image-upload
+                  .image-upload{id: "sub_image_uploader#{i}"}
                     = f.fields_for :captured_images, @images_new do |image|
-                      %img
+                      %img{id: "sub_preview#{i}", style: "height:100%;width:100%;" }
                       = image.file_field :content
                       = image.hidden_field :status, value: "sub"
           -else
             %ul.proto-sub-list.list-group
               - 3.times do |i|
                 %li.list-group-item.col-md-4
-                  .image-upload
+                  .image-upload{id: "sub_image_uploader#{i}"}
                     = f.fields_for :captured_images do |image|
-                      %img
+                      %img{id: "sub_preview#{i}", style: "height:100%;width:100%;" }
                       = image.file_field :content
                       = image.hidden_field :status, value: "sub"
+
       .row.proto-description
         .col-md-12
           %h4 Catch Copy
