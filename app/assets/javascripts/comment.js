@@ -12,9 +12,7 @@ $(function(){
       <div class='comment-text'>
         ${comment.comment}
       </div>
-      <div class='comment-btn'>
-        <a '#'>編集</a>
-        <a '#'>削除</a>`
+    </div>`
     return html;
   }
   // コメントAjax化
