@@ -55,9 +55,6 @@
               = link_to comment.user.name, "/users/#{comment.user_id}"
             .comment-text
               = (comment.comment)
-            .comment-btn
-              %a 編集
-              %a 削除
     - if user_signed_in?
       = form_for(@comment, url: prototype_comments_path(prototype_id: @prototype.id)) do |f|
         %p
