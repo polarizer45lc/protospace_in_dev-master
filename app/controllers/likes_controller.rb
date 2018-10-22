@@ -6,8 +6,8 @@ class LikesController < ApplicationController
       @prototype.like(current_user)
       @prototype.reload
       respond_to do |format|
-        format.html { redirect_to request.referrer || root_url }
-        # format.html { redirect_to prototypes_path(@prototype) }
+        # format.html { redirect_to request.referrer || root_url }
+        format.html { redirect_to prototypes_path(@prototype) }
         format.json
       end
     end
@@ -19,9 +19,8 @@ class LikesController < ApplicationController
       @prototype.unlike(current_user)
       # @prototype.reload
       respond_to do |format|
-        format.html { redirect_to request.referrer || root_url }
-        # format.html { redirect_to prototypes_path(@prototype) }
-        # prototype_path
+        # format.html { redirect_to request.referrer || root_url }
+        format.html { redirect_to prototypes_path(@prototype) }
         format.json
       end
     end
